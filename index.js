@@ -1,16 +1,10 @@
 'use strict';
+
+// Imports dependencies and set up http server
 const
   express = require('express'),
   bodyParser = require('body-parser'),
-  app = express().use(bodyParser.json()); 
-const https = require('https');
-const fs = require('fs');
-const port = 3000;
-var httpsOptions = { 
-    key: fs.readFileSync('server-key.pem'), 
-    cert: fs.readFileSync('server-crt.pem'), 
-    ca: fs.readFileSync('ca-crt.pem'), 
-};
+  app = express().use(bodyParser.json()); // creates express http server
 
 app.post('/webhook', (req, res) => {  
   let body = req.body;
@@ -40,6 +34,5 @@ app.get('/webhook', (req, res) => {
       }
     }
   });
-  const server = https.createServer(httpsOptions, app).listen(port, () => {
-    console.log('server running at ' + port)
-  })
+
+app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
