@@ -8,12 +8,12 @@ const
 
 app.post('/webhook', (req, res) => {  
   let body = req.body;
-  console.log(body);
-  console.log(body.entry);
-  console.log(body.entry[0].changes);
-  console.log(body.entry[0].changes[0]);
-  console.log(body.entry[0].changes[0].value);
-  console.log(body.entry[0].changes[0].value.message);
+   console.log(JSON.stringify(body));
+//   console.log(body.entry);
+//   console.log(body.entry[0].changes);
+//   console.log(body.entry[0].changes[0]);
+//   console.log(body.entry[0].changes[0].value);
+//   console.log(body.entry[0].changes[0].value.message);
 //   if (body.object === 'page') {
 //     body.entry.forEach(function(entry) {
 //       let webhook_event = entry.messaging[0];
